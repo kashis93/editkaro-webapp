@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #0B0B0E;
+  --bg-card: #131318;
+  --bg-card-hover: #1A1A22;
+  --text-primary: #F4F0EA;
+  --text-muted: #9E9BA8;
+  --accent-red: #FF3333;
+  --accent-red-hover: #E60000;
+  --border-dark: #26242E;
+  --border-glow: rgba(255, 51, 51, 0.3);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: auto !important;
+}
+
+/* Ensure system cursor is default everywhere */
+*, *::before, *::after {
+  cursor: auto;
+}
+
+a, button, input, select, textarea, [role="button"] {
+  cursor: pointer;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0E;
+}
+::-webkit-scrollbar-thumb {
+  background: #26242E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF3333;
+}
+
+/* Font utilities */
+.font-display {
+  font-family: 'Archivo Black', 'Syne', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Nav Link Underline Animation */
+.nav-link-underline {
+  position: relative;
+  display: inline-block;
+  color: #9E9BA8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #FF3333;
+  box-shadow: 0 0 8px rgba(255, 51, 51, 0.8);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link-underline:hover {
+  color: #F4F0EA;
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  width: 100%;
+}
+
+.nav-link-underline.active {
+  color: #FF3333;
+}
+
+/* Infinite Auto Card Scrolling Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Skeleton Loading Shimmer */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
